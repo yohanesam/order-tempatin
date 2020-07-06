@@ -77,6 +77,7 @@ class OrderController extends Controller
             foreach($request['form_detail'] as $i => $form){
                 $formValue = OrderFormValue::create([
                     'order_id' => $orderId,
+                    'room_id' => $request['room_id'],
                     'form_detail_id' => $form['form_detail_id'],
                     'nama_form' => $form['nama_form'],
                     'value' => $form['value'],
