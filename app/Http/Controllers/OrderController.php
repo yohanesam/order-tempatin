@@ -12,10 +12,6 @@ use DateTime;
 use App\User;
 use Xendit\Xendit;
 use App\Http\Controllers\PaymentController;
-// use App\FormContent;
-// use App\Package;
-// use App\Room;
-// use App\PromoDetail;
 
 
 class OrderController extends Controller
@@ -91,9 +87,7 @@ class OrderController extends Controller
             return response()->json([
                 'data' => [
                     'order' => $order,
-                    'invoice' => $payment,
-                    'schedule' => $schedule,
-                    'form_detail' => $formValue,
+                    'invoice_link' => $payment['invoice_url'],
                 ],
                 'error' => false,
             ]);
