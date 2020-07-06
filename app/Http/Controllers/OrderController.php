@@ -81,9 +81,7 @@ class OrderController extends Controller
                     'value' => $form['value'],
                 ]);
             }
-
-            $formValue = OrderFormValue::where('order_id', $orderId)
-                                         ->get();
+            
             return response()->json([
                 'data' => [
                     'order' => $order,
