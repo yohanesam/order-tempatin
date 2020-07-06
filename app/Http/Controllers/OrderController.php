@@ -60,7 +60,7 @@ class OrderController extends Controller
             $order->save();
             
             $orderId = $order['id_order'];
-            
+            $roomId = $request['room_id'];
             // Convert String to Date can use code bellow
             //
             // DateTime::createFromFormat('Y-m-d H:i:s', $request['start_date'])->format('Y-m-d H:i:s')
@@ -77,7 +77,7 @@ class OrderController extends Controller
             foreach($request['form_detail'] as $i => $form){
                 $formValue = OrderFormValue::create([
                     'order_id' => $orderId,
-                    'room_id' => $request['room_id'],
+                    'room_id' => $roomId,
                     'form_detail_id' => $form['form_detail_id'],
                     'nama_form' => $form['nama_form'],
                     'value' => $form['value'],
