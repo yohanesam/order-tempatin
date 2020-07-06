@@ -50,7 +50,7 @@ class OrderController extends Controller
                 'invoice_id' => '',
                 'room_id' => $request['room_id'],
                 'user_id' => $request['user']['id_user'],
-                'setup_id' => $requet['setup_id'],
+                'setup_id' => $request['setup_id'],
                 'cost_total' => $request['cost_total'],
                 'status_order' => 'PENDING',
             ]);
