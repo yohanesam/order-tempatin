@@ -18,6 +18,7 @@ class CreateOrder extends Migration
             $table->integer('room_id');
             $table->string('invoice_id');
             $table->integer('user_id');
+            $table->integer('setup_id');
             $table->integer('cost_total');
             $table->string('status_order');
             $table->timestamps();

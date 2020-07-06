@@ -16,6 +16,7 @@ class CreateOrderSchedule extends Migration
         Schema::create('order_schedule', function (Blueprint $table) {
             $table->bigIncrements('id_order_schedule');
             $table->integer('order_id');
+            $table->integer('room_id');
             $table->string('start_date');
             $table->string('end_date');
             $table->string('start_time');
