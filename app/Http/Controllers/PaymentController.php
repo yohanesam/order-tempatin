@@ -9,8 +9,6 @@ use Illuminate\Http\Request;
 trait PaymentController
 {
     public function createInvoice(Request $request, $orderId) {
-        //read
-        // Xendit::setApiKey("xnd_development_jxtjYKA1pp9FiNh0xb05C8WubQcAaIJkF43n6Rmb6LveQPkYss2uHuKXVRHy");
         //write
         Xendit::setApiKey("xnd_development_aFIpH1O1jry6rqyu0deoBaKuJ9OtcMc0AuBDSSusr0rKaTFkGJygwGSSOV6uoIcX");
 
@@ -25,5 +23,14 @@ trait PaymentController
         
         $createInvoice = \Xendit\Invoice::create($params);
         return $createInvoice;
+    }
+
+    public function getInvoice($id) {
+        //read
+        Xendit::setApiKey("xnd_development_jxtjYKA1pp9FiNh0xb05C8WubQcAaIJkF43n6Rmb6LveQPkYss2uHuKXVRHy");
+
+        $getInvoice = \Xendit\Invoice::retrieve($id);
+
+        return $getInvoice;
     }
 }

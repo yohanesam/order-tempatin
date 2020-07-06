@@ -12,9 +12,21 @@ class OrderScheduleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        //
+        $orderSchedule = OrderSchedule::where('room_id', $id)
+                                         ->get();
+        if($orderSchedule) {
+            return response()->json([
+                'data'=> $orderSchedule,
+                'error' => false
+            ]);
+        } else {
+            return response()->json([
+                'data' => [],
+                'error' => true
+            ]);
+        }
     }
 
     /**
@@ -46,18 +58,7 @@ class OrderScheduleController extends Controller
      */
     public function show($id)
     {
-        $ordereSchedule = OrderSchedule::where('room_id', $id)
-                                         ->get();
-        if($ordereSchedule) {
-            return response()->json([
-                'data'=> $ordereSchedule,
-                'error' => false
-            ]);
-        } else {
-            return response()->json([
-                'error' => true
-            ]);
-        }
+        //
     }
 
     /**

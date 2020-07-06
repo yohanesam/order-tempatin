@@ -22,9 +22,21 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($userId)
     {
-        //
+        $orders = Order::where('user_id', $userId)
+                         ->get();
+        if($orders) {
+            return response()->json([
+                'data'=> $orders,
+                'error' => false
+            ]);
+        } else {
+            return response()->json([
+                'data' => [],
+                'error' => true
+            ]);
+        }
     }
 
     /**
@@ -108,7 +120,23 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        //
+        $order = Order::where('id_order', $id)
+                         ->first();
+        if($order) {
+            $payment = $this->getInvoice($order->invoice_id);
+            return response()->json([
+                'data'=> [
+                    'order' => $order,
+                    'invoice' => $payment,
+                ],
+                'error' => false
+            ]);
+        } else {
+            return response()->json([
+                'data' => [],
+                'error' => true
+            ]);
+        }
     }
 
     /**
@@ -129,9 +157,9 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        
     }
 
     /**

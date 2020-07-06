@@ -63,4 +63,7 @@ Route::get('promo', 'PromoController@index');
 
 //////////////////////////////////////////////////////////////////////////
 Route::post('create_order', 'OrderController@store');
-Route::get('schedule/{id}', 'OrderScheduleController@show');
+Route::get('orders/{id}', 'OrderController@index');
+Route::get('order/{id}', 'OrderController@show');
+Route::post('payment_callback', 'OrderController@store');
+Route::get('order_schedule/{id}', 'OrderScheduleController@index');
