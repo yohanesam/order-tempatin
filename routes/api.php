@@ -18,8 +18,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('pay', 'PaymentController@index');
-
 Route::post('search/room', 'RoomController@api_search');
 
 Route::get('kota/{id}', 'BuildingController@api_kota');
@@ -66,4 +64,6 @@ Route::post('create_order', 'OrderController@store');
 Route::get('orders/{id}', 'OrderController@index');
 Route::get('order/{id}', 'OrderController@show');
 Route::post('payment_callback', 'OrderController@store');
+Route::get('room_schedule/{id}', 'OrderScheduleController@schedule');
 Route::get('order_schedule/{id}', 'OrderScheduleController@index');
+Route::get('order_form/{id}', 'OrderFormValueController@show');

@@ -14,6 +14,22 @@ class OrderScheduleController extends Controller
      */
     public function index($id)
     {
+        $orderSchedule = OrderSchedule::where('order_id', $id)
+                                         ->first();
+        if($orderSchedule) {
+            return response()->json([
+                'data'=> $orderSchedule,
+                'error' => false
+            ]);
+        } else {
+            return response()->json([
+                'data' => [],
+                'error' => true
+            ]);
+        }
+    }
+
+    public function schedule($id) {
         $orderSchedule = OrderSchedule::where('room_id', $id)
                                          ->get();
         if($orderSchedule) {

@@ -11,12 +11,12 @@ use App\Review;
 use DateTime;
 use App\User;
 use Xendit\Xendit;
-use App\Http\Controllers\PaymentController;
+use App\Traits\PaymentTraits;
 
 
 class OrderController extends Controller
 {
-    use PaymentController;
+    use PaymentTraits;
     /**
      * Display a listing of the resource.
      *

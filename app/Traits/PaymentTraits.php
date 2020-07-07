@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Traits;
 
 use Xendit\Xendit;
 use Illuminate\Http\Request;
 // use Illuminate\Support\Facades\Auth;
 
-trait PaymentController
+trait PaymentTraits
 {
     public function createInvoice(Request $request, $orderId) {
         //write
