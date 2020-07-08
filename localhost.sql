@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 03, 2020 at 05:00 PM
+-- Generation Time: Jul 08, 2020 at 06:15 PM
 -- Server version: 10.3.23-MariaDB
 -- PHP Version: 7.3.6
 
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `skripsit_tempatin`
 --
+CREATE DATABASE IF NOT EXISTS `skripsit_tempatin` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `skripsit_tempatin`;
 
 -- --------------------------------------------------------
 
@@ -51,8 +53,8 @@ CREATE TABLE `buildings` (
 --
 
 INSERT INTO `buildings` (`id_building`, `user_id`, `building_type_id`, `nama_bangunan`, `foto_bangunan`, `jumlah_lantai`, `deskripsi`, `alamat`, `kota`, `provinsi`, `negara`, `kode_pos`, `status_tempat`, `created_at`, `updated_at`) VALUES
-(1, 7, '', 'Wisma 76', '[\"SNOWDEN.jpg\",\"Snowden-Movie-Review-Oliver-Stone-Edward-Snowden.jpg\"]', 12, '<font size=\"5\">Sewa</font>', 'Jl. Letjen, palmerah, bogor', '151', '6', 'Indonesia', '1111', 'draft', '2020-04-03 10:38:05', '2020-04-13 21:36:51'),
-(2, 7, '', 'The HOP', '[\"hop.png\",\"hop1.png\",\"hop2.png\"]', 2, '<a href=\"https://www.instagram.com/hop_bip/\">@HOP_BIP</a><div>House Of Production&nbsp;<a href=\"https://www.instagram.com/bip_inc/\">@bip_inc</a></div>', 'Jl. Ridwan Rais, Perumahan Politeknik No.7, Beji Tim., Kecamatan Beji.', '115', '9', 'Indonesia', '16422', 'publish', '2020-04-09 11:05:13', '2020-04-09 11:05:13');
+(1, 7, '2', 'Wisma 76', '[\"SNOWDEN.jpg\",\"Snowden-Movie-Review-Oliver-Stone-Edward-Snowden.jpg\"]', 12, '<font size=\"5\">Sewa</font>', 'Jl. Letjen, palmerah, bogor', '151', '6', 'Indonesia', '1111', 'draft', '2020-04-03 10:38:05', '2020-07-07 08:27:37'),
+(2, 7, '3', 'The HOP', '[\"hop.png\",\"hop1.png\",\"hop2.png\"]', 2, '<a href=\"https://www.instagram.com/hop_bip/\">@HOP_BIP</a><div>House Of Production&nbsp;<a href=\"https://www.instagram.com/bip_inc/\">@bip_inc</a></div>', 'Jl. Ridwan Rais, Perumahan Politeknik No.7, Beji Tim., Kecamatan Beji.', '22', '9', 'Indonesia', '16422', 'publish', '2020-04-09 11:05:13', '2020-07-07 08:27:51');
 
 -- --------------------------------------------------------
 
@@ -104,7 +106,7 @@ INSERT INTO `category_details` (`id_category_detail`, `room_category_id`, `room_
 (18, 10, 4, '2020-05-18 23:20:17', '2020-05-18 23:20:17'),
 (19, 11, 4, '2020-05-18 23:20:17', '2020-05-18 23:20:17'),
 (20, 12, 4, '2020-05-18 23:20:17', '2020-05-18 23:20:17'),
-(22, 9, 1, '2020-06-15 09:09:10', '2020-06-15 09:09:10');
+(27, 9, 1, '2020-07-07 17:06:22', '2020-07-07 17:06:22');
 
 -- --------------------------------------------------------
 
@@ -166,8 +168,8 @@ INSERT INTO `facility_details` (`id_facility_detail`, `facility_category_id`, `r
 (6, 3, 3, '', '', '', '2020-04-14 02:06:29', '2020-04-14 02:06:29'),
 (7, 8, 3, '', '', '', '2020-04-14 02:06:29', '2020-04-14 02:06:29'),
 (8, 9, 3, '', '', '', '2020-04-14 02:06:30', '2020-04-14 02:06:30'),
-(43, 9, 1, NULL, NULL, NULL, '2020-06-15 09:09:10', '2020-06-15 09:09:10'),
-(42, 2, 1, NULL, NULL, NULL, '2020-06-15 09:09:10', '2020-06-15 09:09:10'),
+(53, 9, 1, NULL, NULL, NULL, '2020-07-07 17:06:22', '2020-07-07 17:06:22'),
+(52, 2, 1, NULL, NULL, NULL, '2020-07-07 17:06:22', '2020-07-07 17:06:22'),
 (32, 1, 4, '', '', '', '2020-05-18 23:20:18', '2020-05-18 23:20:18'),
 (33, 2, 4, '', '', '', '2020-05-18 23:20:18', '2020-05-18 23:20:18'),
 (34, 3, 4, '', '', '', '2020-05-18 23:20:19', '2020-05-18 23:20:19'),
@@ -218,6 +220,24 @@ CREATE TABLE `form_contents` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `form_contents`
+--
+
+INSERT INTO `form_contents` (`id_form_content`, `order_id`, `form_detail_id`, `value`, `created_at`, `updated_at`) VALUES
+(1, 2, 65, 'Aryo', '2020-07-05 03:51:46', '2020-07-05 03:51:46'),
+(2, 2, 66, '12-13 tahun', '2020-07-05 03:51:46', '2020-07-05 03:51:46'),
+(3, 2, 67, 'kumpul remaja', '2020-07-05 03:51:46', '2020-07-05 03:51:46'),
+(4, 3, 35, 'Aryo', '2020-07-05 03:59:31', '2020-07-05 03:59:31'),
+(5, 3, 36, '12-13 tahun', '2020-07-05 03:59:31', '2020-07-05 03:59:31'),
+(6, 3, 37, 'kumpul remaja', '2020-07-05 03:59:31', '2020-07-05 03:59:31'),
+(7, 15, 48, 'contoh 1', '2020-07-07 18:13:49', '2020-07-07 18:13:49'),
+(8, 15, 47, 'sepak bola', '2020-07-07 18:13:49', '2020-07-07 18:13:49'),
+(9, 16, 48, 'contoh 1', '2020-07-07 18:34:06', '2020-07-07 18:34:06'),
+(10, 16, 47, 'sepak bola', '2020-07-07 18:34:06', '2020-07-07 18:34:06'),
+(11, 17, 48, 'contoh 1', '2020-07-07 20:43:43', '2020-07-07 20:43:43'),
+(12, 17, 47, 'sepak bola', '2020-07-07 20:43:43', '2020-07-07 20:43:43');
 
 -- --------------------------------------------------------
 
@@ -299,16 +319,43 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 
 CREATE TABLE `orders` (
   `id_order` bigint(20) UNSIGNED NOT NULL,
-  `invoice_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `invoice_id` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `user_id` int(11) NOT NULL,
-  `form_id` int(11) NOT NULL,
-  `promo_detail_id` int(11) NOT NULL,
-  `method_pay` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `cost_total` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `status_order` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `room_id` int(11) DEFAULT NULL,
+  `form_id` int(11) DEFAULT NULL,
+  `setup_id` int(11) DEFAULT NULL,
+  `promo_detail_id` int(11) DEFAULT NULL,
+  `start_date` date DEFAULT NULL,
+  `end_date` date DEFAULT NULL,
+  `method_pay` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `cost_total` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status_order` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id_order`, `invoice_id`, `user_id`, `room_id`, `form_id`, `setup_id`, `promo_detail_id`, `start_date`, `end_date`, `method_pay`, `cost_total`, `status_order`, `created_at`, `updated_at`) VALUES
+(1, NULL, 3, 3, 12, NULL, NULL, NULL, NULL, NULL, '260000', 'UNPAID', '2020-07-04 21:13:56', '2020-07-04 21:13:56'),
+(2, NULL, 3, 3, 12, NULL, NULL, NULL, NULL, NULL, '260000', 'UNPAID', '2020-07-05 03:51:46', '2020-07-05 03:51:46'),
+(3, NULL, 3, 3, 12, NULL, NULL, NULL, NULL, NULL, '260000', 'UNPAID', '2020-07-05 03:59:31', '2020-07-05 03:59:31'),
+(4, NULL, 3, 1, 12, 1, 2, '2020-06-29', '2020-07-03', NULL, NULL, 'UNPAID', '2020-07-07 17:01:22', '2020-07-07 17:01:22'),
+(5, NULL, 3, 1, 12, 1, NULL, '2020-06-29', '2020-07-03', NULL, NULL, 'UNPAID', '2020-07-07 17:01:31', '2020-07-07 17:01:31'),
+(6, NULL, 3, 1, 12, 1, NULL, '2020-06-29', '2020-07-03', NULL, NULL, 'UNPAID', '2020-07-07 17:05:02', '2020-07-07 17:05:02'),
+(7, NULL, 3, 1, 12, 1, NULL, '2020-06-29', '2020-07-03', NULL, NULL, 'UNPAID', '2020-07-07 17:05:07', '2020-07-07 17:05:07'),
+(8, NULL, 3, 1, 12, 1, NULL, '2020-06-29', '2020-07-03', NULL, NULL, 'UNPAID', '2020-07-07 17:05:11', '2020-07-07 17:05:11'),
+(9, NULL, 3, 1, 12, 1, NULL, '2020-06-29', '2020-07-03', NULL, NULL, 'UNPAID', '2020-07-07 17:05:15', '2020-07-07 17:05:15'),
+(10, NULL, 3, 1, 12, 1, NULL, '2020-06-29', '2020-07-03', NULL, NULL, 'UNPAID', '2020-07-07 17:05:35', '2020-07-07 17:05:35'),
+(11, NULL, 3, 1, 12, 1, NULL, '2020-06-29', '2020-07-03', NULL, NULL, 'UNPAID', '2020-07-07 17:06:41', '2020-07-07 17:06:41'),
+(12, NULL, 3, 1, 12, 1, NULL, '2020-06-29', '2020-07-03', NULL, NULL, 'UNPAID', '2020-07-07 17:26:44', '2020-07-07 17:26:44'),
+(13, NULL, 3, 1, 12, 1, NULL, '2020-06-29', '2020-07-03', NULL, NULL, 'UNPAID', '2020-07-07 18:07:18', '2020-07-07 18:07:18'),
+(14, NULL, 3, 1, 12, 1, NULL, '2020-06-29', '2020-07-03', NULL, NULL, 'UNPAID', '2020-07-07 18:08:15', '2020-07-07 18:08:15'),
+(15, NULL, 3, 1, 12, 1, NULL, '2020-06-29', '2020-07-03', NULL, '860000', 'UNPAID', '2020-07-07 18:13:49', '2020-07-07 18:13:49'),
+(16, NULL, 3, 1, 12, 1, NULL, '2020-06-29', '2020-07-03', NULL, '860000', 'UNPAID', '2020-07-07 18:34:06', '2020-07-07 18:34:06'),
+(17, NULL, 3, 1, 12, 1, NULL, '2020-06-29', '2020-07-03', NULL, '860000', 'UNPAID', '2020-07-07 20:43:43', '2020-07-07 20:43:43');
 
 -- --------------------------------------------------------
 
@@ -318,16 +365,43 @@ CREATE TABLE `orders` (
 
 CREATE TABLE `order_details` (
   `id_order_detail` bigint(20) UNSIGNED NOT NULL,
-  `order_id` int(11) NOT NULL,
-  `room_id` int(11) NOT NULL,
-  `package_id` int(11) NOT NULL,
-  `schedule_id` int(11) NOT NULL,
-  `jam_mulai` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `jam_selesai` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `total_package` int(11) NOT NULL,
+  `order_id` int(11) DEFAULT NULL,
+  `package_id` int(11) DEFAULT NULL,
+  `schedule_id` int(11) DEFAULT NULL,
+  `date_day` date DEFAULT NULL,
+  `jam_mulai` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `jam_selesai` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `total_package` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `order_details`
+--
+
+INSERT INTO `order_details` (`id_order_detail`, `order_id`, `package_id`, `schedule_id`, `date_day`, `jam_mulai`, `jam_selesai`, `total_package`, `created_at`, `updated_at`) VALUES
+(1, 1, 4, 7, NULL, '06:00', '12:00', 1, '2020-07-04 21:13:56', '2020-07-04 21:13:56'),
+(2, 1, 1, 7, NULL, '12:00', '13:00', 1, '2020-07-04 21:13:56', '2020-07-04 21:13:56'),
+(3, 2, 4, 7, NULL, '06:00', '12:00', 1, '2020-07-05 03:51:46', '2020-07-05 03:51:46'),
+(4, 2, 1, 7, NULL, '12:00', '13:00', 1, '2020-07-05 03:51:46', '2020-07-05 03:51:46'),
+(5, 3, 4, 7, NULL, '06:00', '12:00', 1, '2020-07-05 03:59:31', '2020-07-05 03:59:31'),
+(6, 3, 1, 7, NULL, '12:00', '13:00', 1, '2020-07-05 03:59:31', '2020-07-05 03:59:31'),
+(7, 15, 4, NULL, NULL, '10:00:00', '23:59:59', 2, '2020-07-07 18:13:49', '2020-07-07 18:13:49'),
+(8, 15, 4, NULL, NULL, '00:00:00', '23:59:59', 2, '2020-07-07 18:13:49', '2020-07-07 18:13:49'),
+(9, 15, 4, NULL, NULL, '06:00:00', '23:59:59', 2, '2020-07-07 18:13:49', '2020-07-07 18:13:49'),
+(10, 15, 4, NULL, NULL, '06:00:00', '23:59:59', 2, '2020-07-07 18:13:49', '2020-07-07 18:13:49'),
+(11, 15, 1, NULL, NULL, '06:00:00', '12:00:00', 6, '2020-07-07 18:13:49', '2020-07-07 18:13:49'),
+(12, 16, 4, NULL, NULL, '10:00:00', '23:59:59', 2, '2020-07-07 18:34:06', '2020-07-07 18:34:06'),
+(13, 16, 4, NULL, NULL, '00:00:00', '23:59:59', 2, '2020-07-07 18:34:06', '2020-07-07 18:34:06'),
+(14, 16, 4, NULL, NULL, '06:00:00', '23:59:59', 2, '2020-07-07 18:34:06', '2020-07-07 18:34:06'),
+(15, 16, 4, NULL, NULL, '06:00:00', '23:59:59', 2, '2020-07-07 18:34:06', '2020-07-07 18:34:06'),
+(16, 16, 1, NULL, NULL, '06:00:00', '12:00:00', 6, '2020-07-07 18:34:06', '2020-07-07 18:34:06'),
+(17, 17, 4, 17, NULL, '10:00:00', '23:59:59', 2, '2020-07-07 20:43:43', '2020-07-07 20:43:43'),
+(18, 17, 4, 18, NULL, '00:00:00', '23:59:59', 2, '2020-07-07 20:43:43', '2020-07-07 20:43:43'),
+(19, 17, 4, 19, NULL, '06:00:00', '23:59:59', 2, '2020-07-07 20:43:43', '2020-07-07 20:43:43'),
+(20, 17, 4, 20, NULL, '06:00:00', '23:59:59', 2, '2020-07-07 20:43:43', '2020-07-07 20:43:43'),
+(21, 17, 1, 21, NULL, '06:00:00', '12:00:00', 6, '2020-07-07 20:43:43', '2020-07-07 20:43:43');
 
 -- --------------------------------------------------------
 
@@ -376,8 +450,8 @@ CREATE TABLE `package_details` (
 INSERT INTO `package_details` (`id_package_detail`, `room_id`, `package_id`, `harga`, `created_at`, `updated_at`) VALUES
 (2, 2, 1, '60000', '2020-04-14 02:01:51', '2020-04-14 02:01:51'),
 (3, 3, 3, '25000', '2020-04-14 02:06:30', '2020-04-14 02:06:30'),
-(16, 1, 4, '200000', '2020-06-15 09:09:10', '2020-06-15 09:09:10'),
-(15, 1, 1, '40000', '2020-06-15 09:09:10', '2020-06-15 09:09:10'),
+(26, 1, 1, '40000', '2020-07-07 17:06:22', '2020-07-07 17:06:22'),
+(25, 1, 4, '200000', '2020-07-07 17:06:22', '2020-07-07 17:06:22'),
 (12, 4, 2, '200000', '2020-05-18 23:20:19', '2020-05-18 23:20:19'),
 (13, 4, 3, '3000000', '2020-05-18 23:20:19', '2020-05-18 23:20:19'),
 (14, 4, 1, '60000', '2020-05-18 23:20:19', '2020-05-18 23:20:19');
@@ -521,7 +595,7 @@ INSERT INTO `room_categories` (`id_room_category`, `nama_kategori`, `gambar_kate
 --
 
 CREATE TABLE `schedules` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+  `id_schedule` bigint(20) UNSIGNED NOT NULL,
   `room_id` int(11) NOT NULL,
   `hari` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `jam_buka` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -535,8 +609,12 @@ CREATE TABLE `schedules` (
 -- Dumping data for table `schedules`
 --
 
-INSERT INTO `schedules` (`id`, `room_id`, `hari`, `jam_buka`, `jam_tutup`, `status_jadwal`, `created_at`, `updated_at`) VALUES
-(1, 1, '1', '09:00:00', '16:00:00', 'public', '2020-06-15 09:09:10', '2020-06-15 09:09:10');
+INSERT INTO `schedules` (`id_schedule`, `room_id`, `hari`, `jam_buka`, `jam_tutup`, `status_jadwal`, `created_at`, `updated_at`) VALUES
+(20, 1, '5', '06:00:00', '23:59:59', 'public', '2020-07-07 17:06:22', '2020-07-07 17:06:22'),
+(19, 1, '4', '06:00:00', '23:59:59', 'public', '2020-07-07 17:06:22', '2020-07-07 17:06:22'),
+(18, 1, '3', '00:00:00', '23:59:59', 'public', '2020-07-07 17:06:22', '2020-07-07 17:06:22'),
+(17, 1, '2', '00:00:00', '23:59:59', 'public', '2020-07-07 17:06:22', '2020-07-07 17:06:22'),
+(21, 1, '6', '06:00:00', '23:59:59', 'public', '2020-07-07 17:06:22', '2020-07-07 17:06:22');
 
 -- --------------------------------------------------------
 
@@ -592,7 +670,7 @@ INSERT INTO `setup_details` (`id_setup_detail`, `setup_id`, `room_id`, `created_
 (17, 5, 4, '2020-05-18 23:20:18', '2020-05-18 23:20:18'),
 (18, 6, 4, '2020-05-18 23:20:18', '2020-05-18 23:20:18'),
 (19, 7, 4, '2020-05-18 23:20:18', '2020-05-18 23:20:18'),
-(21, 1, 1, '2020-06-15 09:09:10', '2020-06-15 09:09:10');
+(26, 1, 1, '2020-07-07 17:06:22', '2020-07-07 17:06:22');
 
 -- --------------------------------------------------------
 
@@ -621,8 +699,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id_user`, `foto_profile`, `nama_user`, `email`, `email_verified_at`, `password`, `role_id`, `status_user`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'foto/ws.png', 'Aryo', 'aryo100@gmail.com', NULL, '$2y$10$dJpPBIBhC1q1lwD2zjLnaehOaqDQJeIanUceJRACTvpJwUB855Uxi', 1, 'approved', 'MZk2zmBZeq9XwSprteN705IEGHAGyGrGkiaevi7IQkH1s4S5HvbWKifNmgNL', '2020-03-12 03:14:43', '2020-06-22 19:45:09'),
 (2, NULL, 'Admin', 'admin', NULL, '$2y$10$dJpPBIBhC1q1lwD2zjLnaehOaqDQJeIanUceJRACTvpJwUB855Uxi', 0, 'approved', '8lNFvxKqaHwKTeFovkPxCqR6FuNZ78geztccRbsk7bvYuWrRmg7DcUBPBh7Q', '2020-03-12 03:14:43', '2020-07-01 17:49:53'),
-(3, 'foto/image_picker3242888407964781859.jpg', 'karo', 'karo@gmail.com', NULL, '$2y$10$fUHcFoe5v2iXa6UtjHkOnuTv31eEgGa8OHUeYMBSjbc0YWKUJurJ2', 2, 'unapproved', 'Em5TRLDlloMiSpd7k0ZXBrG8KOImRj0H7QIfMorS80rJGDLQkxo4Xw6LHMrI', '2020-03-25 19:49:49', '2020-06-25 07:07:01'),
-(7, 'foto/image_picker4351936976974959254.jpg', 'hopp', 'hop@gmail.com', NULL, '$2y$10$5j23J02ljvavaNjEun.VIeaec3ZCgfBFGYaQFfz0I8GY5Y/iRiAKG', 1, 'approved', 'LelYaf4bOHJEP5oK38ymNNaVuRx1cR3k90oVaKvw4ThIF7KUIFw76jtLUIop', '2020-03-25 21:15:44', '2020-06-30 20:04:01'),
+(3, 'foto/image_picker3242888407964781859.jpg', 'yohanes', 'yohanes.manullang.tik16@mhsw.pnj.ac.id', NULL, '$2y$10$fUHcFoe5v2iXa6UtjHkOnuTv31eEgGa8OHUeYMBSjbc0YWKUJurJ2', 2, 'unapproved', 'Qt1qWFiZfV3Wkw1CAYaFouJwdjWJK06LHOQuuuxbtcHXhYePq02EgSzcCRoC', '2020-03-25 19:49:49', '2020-07-05 15:36:01'),
+(7, 'foto/image_picker4351936976974959254.jpg', 'hopp', 'hop@gmail.com', NULL, '$2y$10$5j23J02ljvavaNjEun.VIeaec3ZCgfBFGYaQFfz0I8GY5Y/iRiAKG', 1, 'approved', 'cHcuFx31V2kAWO176L6o9OGxeBKRgHcZ51nLKssiU7juE9JLyRmtk40uJVQd', '2020-03-25 21:15:44', '2020-07-07 17:04:20'),
 (10, NULL, 'AdminA', 'adminA', NULL, '$2y$10$2./FnR54luompYYya6lgy.9LSRBISVgzCFk6UJmw5T013R0tSTNde', 1, 'unapproved', NULL, '2020-06-15 08:36:33', '2020-06-15 08:43:44'),
 (11, 'foto/63384.jpg', 'Hid', 'hid', NULL, '$2y$10$8RHD1.tM9fonZi1H2qwb9O9bZ2nupuSKxpqlWCIqbHqa7wof7N/US', 2, 'unapproved', NULL, '2020-06-17 05:02:33', '2020-06-17 05:04:33');
 
@@ -748,7 +826,7 @@ ALTER TABLE `room_categories`
 -- Indexes for table `schedules`
 --
 ALTER TABLE `schedules`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id_schedule`);
 
 --
 -- Indexes for table `setups`
@@ -789,7 +867,7 @@ ALTER TABLE `building_types`
 -- AUTO_INCREMENT for table `category_details`
 --
 ALTER TABLE `category_details`
-  MODIFY `id_category_detail` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_category_detail` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `facility_categories`
@@ -801,7 +879,7 @@ ALTER TABLE `facility_categories`
 -- AUTO_INCREMENT for table `facility_details`
 --
 ALTER TABLE `facility_details`
-  MODIFY `id_facility_detail` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id_facility_detail` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `forms`
@@ -813,7 +891,7 @@ ALTER TABLE `forms`
 -- AUTO_INCREMENT for table `form_contents`
 --
 ALTER TABLE `form_contents`
-  MODIFY `id_form_content` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_form_content` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `form_details`
@@ -831,13 +909,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id_order` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_order` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `id_order_detail` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_order_detail` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `packages`
@@ -849,7 +927,7 @@ ALTER TABLE `packages`
 -- AUTO_INCREMENT for table `package_details`
 --
 ALTER TABLE `package_details`
-  MODIFY `id_package_detail` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_package_detail` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `promos`
@@ -885,7 +963,7 @@ ALTER TABLE `room_categories`
 -- AUTO_INCREMENT for table `schedules`
 --
 ALTER TABLE `schedules`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_schedule` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `setups`
@@ -897,7 +975,7 @@ ALTER TABLE `setups`
 -- AUTO_INCREMENT for table `setup_details`
 --
 ALTER TABLE `setup_details`
-  MODIFY `id_setup_detail` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_setup_detail` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `users`

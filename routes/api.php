@@ -1,4 +1,3 @@
-
 <?php
 
 use Illuminate\Http\Request;
@@ -39,7 +38,7 @@ Route::get('room/categories', 'RoomCategoryController@index');
 Route::get('room/{id}', 'RoomController@edit');
 
 
-Route::get('room/setups', 'SetupController@index');
+Route::get('setups', 'SetupController@index');
 
 Route::get('facility/categories', 'FacilityCategoryController@index');
 
@@ -49,21 +48,14 @@ Route::get('packages', 'PackageController@index');
 
 Route::get('forms', 'FormController@index');
 Route::get('form/{id}', 'FormController@api_form_detail');
+Route::get('payment/method', 'FormController@payment_method');
 
 Route::get('buildings', 'BuildingController@index');
 
 Route::get('promo', 'PromoController@index');
 
-// Route::get('schedule', 'ScheduleController@index');
-
-
-
-
-//////////////////////////////////////////////////////////////////////////
-Route::post('create_order', 'OrderController@store');
-Route::get('orders/{id}', 'OrderController@index');
+Route::post('order', 'OrderController@store');
+Route::post('order/preview', 'OrderController@preview');
 Route::get('order/{id}', 'OrderController@show');
-Route::post('payment_callback', 'OrderController@store');
-Route::get('room_schedule/{id}', 'OrderScheduleController@schedule');
-Route::get('order_schedule/{id}', 'OrderScheduleController@index');
-Route::get('order_form/{id}', 'OrderFormValueController@show');
+
+// Route::get('schedule', 'ScheduleController@index');
