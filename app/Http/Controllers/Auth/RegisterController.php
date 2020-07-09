@@ -82,7 +82,7 @@ class RegisterController extends Controller
             'nama_user' => $request['nama'],
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
-            'role_id' => 1,
+            'role_id' => 2,
             'status_user'=>'approved',
         ]);
 
