@@ -48,7 +48,7 @@ Route::get('packages', 'PackageController@index');
 
 Route::get('forms', 'FormController@index');
 Route::get('form/{id}', 'FormController@api_form_detail');
-Route::get('payment/method', 'FormController@payment_method');
+// Route::get('payment/method', 'FormController@payment_method');
 
 Route::get('buildings', 'BuildingController@index');
 
@@ -56,6 +56,7 @@ Route::get('promo', 'PromoController@index');
 
 Route::post('order', 'OrderController@store');
 Route::post('order/preview', 'OrderController@preview');
+Route::get('orders/{id}', 'OrderController@index');
 Route::get('order/{id}', 'OrderController@show');
 
 // Route::get('schedule', 'ScheduleController@index');

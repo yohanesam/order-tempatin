@@ -8,17 +8,16 @@ use Illuminate\Http\Request;
 
 trait PaymentTraits
 {
-    public function createInvoice(Request $request, $orderId) {
+    public function createInvoice($user, $costTotal, $orderId) {
         //write
-        Xendit::setApiKey("xnd_development_aFIpH1O1jry6rqyu0deoBaKuJ9OtcMc0AuBDSSusr0rKaTFkGJygwGSSOV6uoIcX");
+        Xendit::setApiKey(env('WRITE_SECRET_API_KEY'));
 
         $params = [
-            'external_id' => 'tempatin_payment_'.$orderId,
-            'payer_email' => $request['user']['email'],
+            'external_id' => 'order_tempatin_payment_'.$orderId,
+            'payer_email' => $user['email'],
             'description' => 'Room Payment',
-            'amount' => $request['cost_total'],
+            'amount' => $costTotal,
             'should_send_email' => true,
-            'success_redirect_url' => 'https://tempatin.skripsi-tik.xyz',
         ];
         
         $createInvoice = \Xendit\Invoice::create($params);
@@ -27,7 +26,7 @@ trait PaymentTraits
 
     public function getInvoice($id) {
         //read
-        Xendit::setApiKey("xnd_development_jxtjYKA1pp9FiNh0xb05C8WubQcAaIJkF43n6Rmb6LveQPkYss2uHuKXVRHy");
+        Xendit::setApiKey(env('READ_SECRET_API_KEY'));
 
         $getInvoice = \Xendit\Invoice::retrieve($id);
 

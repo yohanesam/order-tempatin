@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 
 class RegisterController extends Controller
@@ -22,7 +23,10 @@ class RegisterController extends Controller
     |
     */
 
-    use RegistersUsers;
+    use RegistersUsers, AuthenticatesUsers {
+        AuthenticatesUsers::redirectPath insteadof RegistersUsers;
+        AuthenticatesUsers::guard insteadOf RegistersUsers;
+    }
 
     /**
      * Where to redirect users after registration.
@@ -81,15 +85,29 @@ class RegisterController extends Controller
             'role_id' => 1,
             'status_user'=>'approved',
         ]);
-        if($user){
+
+        if ($this->attemptLogin($request)) {
+            $user = $this->guard()->user();
+            $user->generateToken();
             return response()->json([
-                'data'=> $user,
-                'error' => false
-            ]);
+                    'data'=> $user,
+                    'error' => false
+                ]);
         }else{
             return response()->json([
                 'error' => true
             ]);
         }
+
+        // if($user){
+        //     return response()->json([
+        //         'data'=> $user,
+        //         'error' => false
+        //     ]);
+        // }else{
+        //     return response()->json([
+        //         'error' => true
+        //     ]);
+        // }
     }
 }

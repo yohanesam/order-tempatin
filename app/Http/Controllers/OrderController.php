@@ -9,18 +9,33 @@ use App\FormContent;
 use App\Package;
 use App\Room;
 use App\PromoDetail;
+use App\User;
+use App\Traits\PaymentTraits;
 
 
 class OrderController extends Controller
 {
+    use PaymentTraits;
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        // 
+        $orders = Order::where('user_id', $id)
+                         ->get();
+        if($orders) {
+            return response()->json([
+                'data'=> $orders,
+                'error' => false
+            ]);
+        } else {
+            return response()->json([
+                'data' => [],
+                'error' => true
+            ]);
+        }
     }
 
     /**
@@ -47,11 +62,14 @@ class OrderController extends Controller
                 'form_id'=>$request['form_id'],
                 'room_id'=>$request['room_id'],
                 'setup_id'=>$request['setup_id'],
-                'start_date'=>date_format(date_create($request['start_date']),"Y-m-d H:i:s"),
-                'end_date'=>date_format(date_create($request['end_date']),"Y-m-d H:i:s"),
+                'start_date'=>$request['start_date'],
+                'end_date'=>$request['end_date'],
                 'promo_detail_id'=>$request['promo_detail_id'],
                 'status_order'=>$request['status_order'],
             ]);
+
+            $user = User::where('id_user', $request['user_id'])->first();
+
             $room = Room::with('schedule')->with('package')->find($request['room_id']);
             // echo json_encode($room);
             $schedule=$room->schedule;
@@ -202,7 +220,11 @@ class OrderController extends Controller
                 $o_d[$i]=$order_d;
             }
             $order->cost_total=$cost;
+
+            $payment = $this->createInvoice($user, $order->cost_total, $order['id_order']);
+            $order->invoice_id = $payment['id'];
             $order->save();
+            
             for ($i=0; $i < count($request['form_content']); $i++) {
                 // $form_detail=FormDetail::find($request['form_content'][$i]['form_detail_id']);
                 // $default_value=$form_detail->??
@@ -237,12 +259,13 @@ class OrderController extends Controller
                 'form_id'=>$request['form_id'],
                 'room_id'=>$request['room_id'],
                 'setup_id'=>$request['setup_id'],
-                'start_date'=>date_format(date_create($request['start_date']),"Y-m-d H:i:s"),
-                'end_date'=>date_format(date_create($request['end_date']),"Y-m-d H:i:s"),
+                'start_date'=>$request['start_date'],
+                'end_date'=>$request['end_date'],
                 'promo_detail_id'=>$request['promo_detail_id'],
                 'status_order'=>$request['status_order'],
                 'cost_total'=>0
             ];
+            // dd($order['start_date']);
             $room = Room::with('schedule')->with('package')->find($request['room_id']);
             // echo json_encode($room);
             $schedule=$room->schedule;
