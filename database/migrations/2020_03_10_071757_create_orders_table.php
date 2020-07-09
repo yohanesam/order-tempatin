@@ -19,7 +19,10 @@ class CreateOrdersTable extends Migration
             $table->integer('user_id');
             $table->integer('room_id');
             $table->integer('form_id');
+            $table->integer('setup_id');
             $table->integer('promo_detail_id');
+            $table->dateTime('start_date');
+            $table->dateTime('end_date');
             $table->string('method_pay');
             $table->string('cost_total');
             $table->string('status_order');
