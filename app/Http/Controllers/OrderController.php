@@ -426,9 +426,12 @@ class OrderController extends Controller
                 }
 
                 $order->form_content = $form;
-                
+                $invoice = $this->getInvoice($order->invoice_id);
                 return response()->json([
-                    'data'=> $order,
+                    'data'=> [
+                        'order' => $order,
+                        'invoice' => $invoice
+                    ],
                     'error' => false
                 ]);
             } else {
