@@ -32,4 +32,9 @@ trait PaymentTraits
 
         return $getInvoice;
     }
+
+    public function expiredInvoice($id) {
+        $expiredInvoice = \Xendit\Invoice::expireInvoice($id);
+        return $expiredInvoice;
+    }
 }

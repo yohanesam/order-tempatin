@@ -444,10 +444,34 @@ class OrderController extends Controller
 
     public function callback(Request $request) 
     {
-        return response()->json([
-            'data'=> $request,
-            'error' => false
-        ]);
+        $order = Order::where('invoice_id', $request['id'])->first();
+        if($order->status_order != $request['status']) {
+            $order->status_order = $request['status'];
+            $order->save();
+            return response()->json([
+                'error' => false
+            ]);
+        } else {
+            return response()->json([
+                'error' => true
+            ]);
+        }
+    }
+
+    public function expired_payment(Request $request) 
+    {
+        $order = Order::where('invoice_id', $request['invoice_id'])->first();
+        if($order->invoice_url != 'EXPIRED') {
+            $payment = $this->expiredInvoice($request['invoice_id']);
+            return response()->json([
+                'error' => false
+            ]);
+        } else {
+            return response()->json([
+                'error' => true
+            ]);
+        }
+
     }
 
     /**
