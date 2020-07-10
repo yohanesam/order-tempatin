@@ -34,6 +34,8 @@ trait PaymentTraits
     }
 
     public function expiredInvoice($id) {
+        //write
+        Xendit::setApiKey(env('WRITE_SECRET_API_KEY'));
         $expiredInvoice = \Xendit\Invoice::expireInvoice($id);
         return $expiredInvoice;
     }
