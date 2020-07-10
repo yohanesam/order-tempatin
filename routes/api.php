@@ -59,4 +59,5 @@ Route::post('order/preview', 'OrderController@preview');
 Route::get('orders/{id}', 'OrderController@index');
 Route::get('order/{id}', 'OrderController@show');
 
+Route::post('payment/callback', 'OrderController@callback');
 // Route::get('schedule', 'ScheduleController@index');

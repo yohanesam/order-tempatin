@@ -442,6 +442,14 @@ class OrderController extends Controller
         }
     }
 
+    public function callback(Request $request) 
+    {
+        return response()->json([
+            'data'=> $request,
+            'error' => false
+        ]);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
