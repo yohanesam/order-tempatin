@@ -24,6 +24,7 @@ class OrderController extends Controller
     public function index($id)
     {
         $orders = Order::where('user_id', $id)
+                         ->orderBy('id_order', 'DESC')
                          ->get();
         if($orders) {
             return response()->json([
