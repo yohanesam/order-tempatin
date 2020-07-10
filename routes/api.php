@@ -58,6 +58,7 @@ Route::post('order', 'OrderController@store');
 Route::post('order/preview', 'OrderController@preview');
 Route::get('orders/{id}', 'OrderController@index');
 Route::get('order/{id}', 'OrderController@show');
+Route::get('order/schedule/{id}', 'OrderController@schedule');
 
 Route::post('payment/callback', 'OrderController@callback');
 Route::post('payment/expired', 'OrderController@expired_payment');

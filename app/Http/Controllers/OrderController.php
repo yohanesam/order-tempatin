@@ -39,6 +39,24 @@ class OrderController extends Controller
         }
     }
 
+    public function schedule($id) {
+        $orders = Order::where('room_id', $id)
+                         ->whereIn('status_order', ['PENDING', 'PAID'])
+                         ->orderBy('id_order', 'DESC')->get();
+
+        if($orders) {
+            return response()->json([
+                'data'=> $orders,
+                'error' => false
+            ]);
+        } else {
+            return response()->json([
+                'data' => [],
+                'error' => true
+            ]);
+        }
+    }
+
     /**
      * Show the form for creating a new resource.
      *
