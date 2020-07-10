@@ -420,11 +420,18 @@ class OrderController extends Controller
         $order=Order::with(['order_detail'])->with('form_content')->find($id);
         if(request()->segment(1)=='api'){
             if($order){
+                $form = $order->form_content;
+                foreach($form as $i => $item){
+                    $form[$i]['input_awal'] = json_decode($item['input_awal']);
+                }
+
+                $order->form_content = $form;
+                
                 return response()->json([
                     'data'=> $order,
                     'error' => false
                 ]);
-            }else{
+            } else {
                 return response()->json([
                     'error' => true
                 ]);
