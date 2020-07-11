@@ -61,5 +61,6 @@ Route::get('order/{id}', 'OrderController@show');
 Route::get('order/schedule/{id}', 'OrderController@schedule');
 
 Route::post('payment/callback', 'OrderController@callback');
+Route::post('payment/callback/test', 'OrderController@callback_test');
 Route::post('payment/expired', 'OrderController@expired_payment');
 // Route::get('schedule', 'ScheduleController@index');

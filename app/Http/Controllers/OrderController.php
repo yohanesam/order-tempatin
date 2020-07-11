@@ -477,6 +477,14 @@ class OrderController extends Controller
         }
     }
 
+    public function callback_test(Request $request) 
+    {
+        return response()->json([
+            'data' => $request,
+            'error' => false
+        ]);
+    }
+
     public function expired_payment(Request $request) 
     {
         $order = Order::where('invoice_id', $request['invoice_id'])->first();
