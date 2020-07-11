@@ -480,7 +480,7 @@ class OrderController extends Controller
     public function callback_test(Request $request) 
     {
         return response()->json([
-            'data' => $request,
+            'data' => $request['test'],
             'error' => false
         ]);
     }
