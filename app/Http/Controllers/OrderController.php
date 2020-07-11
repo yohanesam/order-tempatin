@@ -463,24 +463,28 @@ class OrderController extends Controller
 
     public function callback(Request $request) 
     {
-        $order = Order::where('invoice_id', $request['id'])->first();
-        if($order->status_order != $request['status']) {
-            $order->status_order = $request['status'];
-            $order->save();
-            return response()->json([
-                'error' => false
-            ]);
-        } else {
-            return response()->json([
-                'error' => true
-            ]);
-        }
+        // $order = Order::where('invoice_id', $request['id'])->first();
+        // if($order->status_order != $request['status']) {
+        //     $order->status_order = $request['status'];
+        //     $order->save();
+        //     return response()->json([
+        //         'error' => false
+        //     ]);
+        // } else {
+        //     return response()->json([
+        //         'error' => true
+        //     ]);
+        // }
+        return response()->json([
+            'data' => $request,
+            'error' => false
+        ]);
     }
 
     public function callback_test(Request $request) 
     {
         return response()->json([
-            'data' => $request['test'],
+            'data' => $request,
             'error' => false
         ]);
     }
